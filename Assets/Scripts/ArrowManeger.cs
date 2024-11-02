@@ -6,16 +6,35 @@ public class ArrowManager : MonoBehaviour
 {
     public GameObject[] arrowPrefabs; // Массив Prefab'ов стрелок (0 - пусто, 1 - Up, 2 - Down, 3 - Right, 4 - Left)
     public Transform targetCircle; // Целевой объект Circle
-    public float spawnInterval = 1f; // Интервал появления стрелок
-    public float arrowSpeed = 5f; // Скорость движения стрелок
-    public string sequence = "12340"; // Строка с последовательностью появления стрелок
+    public float spawnInterval = 0.4f; // Интервал появления стрелок
+    public float arrowSpeed = 400f; // Скорость движения стрелок
+    public string sequence = "01234"; // Строка с последовательностью появления стрелок
     public Transform canvasTransform; // Ссылка на Canvas, где будут появляться стрелки
-
     private int currentIndex = 0; // Индекс текущей стрелки в последовательности
 
-    private void Start()
+    private Coroutine spawnCoroutine; // Ссылка на корутину спавна стрелок
+    public int totalArrowsSpawned = 0; // Общее количество созданных стрелок
+    public int totalArrowsDestroyed = 0; // Общее количество уничтоженных стрелок
+
+    public int CalculateMaxScore()
     {
-        StartCoroutine(SpawnArrows());
+        int maxScore = 0;
+        foreach (char c in sequence)
+        {
+            if (c != '0')
+            {
+                maxScore++;
+            }
+        }
+        return maxScore;
+    }
+
+    public void StartSpawning()
+    {
+        if (spawnCoroutine == null)
+        {
+            spawnCoroutine = StartCoroutine(SpawnArrows());
+        }
     }
 
     private IEnumerator SpawnArrows()
@@ -30,6 +49,7 @@ public class ArrowManager : MonoBehaviour
             {
                 GameObject arrowPrefab = arrowPrefabs[arrowIndex];
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, canvasTransform);
+                totalArrowsSpawned++;
                 StartCoroutine(MoveArrow(arrow));
             }
 
@@ -54,6 +74,7 @@ public class ArrowManager : MonoBehaviour
         if (arrow != null)
         {
             Destroy(arrow);
+            totalArrowsDestroyed++;
         }
     }
 }

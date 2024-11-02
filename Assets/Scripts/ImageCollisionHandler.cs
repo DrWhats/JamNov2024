@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement; // Добавляем ссылку на SceneManager
 
 public class ImageCollisionHandler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ImageCollisionHandler : MonoBehaviour
     public InputActionAsset inputActions;
     private InputAction moveAction;
     public GameObject[] HitSFX;
+    public Button returnButton; // Ссылка на кнопку "Return"
+    public TextMeshProUGUI winText; // Ссылка на TextMeshProUGUI для отображения надписи "Win"
 
     private bool wasArrowMissed = false; // Флаг, указывающий, что стрелка была пропущена
 
@@ -23,6 +26,17 @@ public class ImageCollisionHandler : MonoBehaviour
         moveAction = inputActions.FindAction("Player/Move"); // Убедитесь, что это правильный путь к действию
         moveAction.Enable();
         moveAction.performed += ctx => CheckForInput(); // Подписываемся на событие performed
+
+        // Скрываем кнопку "Return" и надпись "Win" при старте
+        if (returnButton != null)
+        {
+            returnButton.gameObject.SetActive(false);
+            returnButton.onClick.AddListener(RestartScene); // Привязываем метод RestartScene к событию нажатия кнопки
+        }
+        if (winText != null)
+        {
+            winText.gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
@@ -40,8 +54,7 @@ public class ImageCollisionHandler : MonoBehaviour
             // Проверяем направление
             if ((moveInput.x < 0) && arrowName.Contains("Left"))
             {
-                Destroy(currentCollidingArrow);
-                currentCollidingArrow = null;
+                DestroyArrow(currentCollidingArrow);
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: LeftArrow");
@@ -49,8 +62,7 @@ public class ImageCollisionHandler : MonoBehaviour
             }
             else if ((moveInput.x > 0) && arrowName.Contains("Right"))
             {
-                Destroy(currentCollidingArrow);
-                currentCollidingArrow = null;
+                DestroyArrow(currentCollidingArrow);
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: RightArrow");
@@ -58,8 +70,7 @@ public class ImageCollisionHandler : MonoBehaviour
             }
             else if ((moveInput.y > 0) && arrowName.Contains("Up"))
             {
-                Destroy(currentCollidingArrow);
-                currentCollidingArrow = null;
+                DestroyArrow(currentCollidingArrow);
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: UpArrow");
@@ -67,8 +78,7 @@ public class ImageCollisionHandler : MonoBehaviour
             }
             else if ((moveInput.y < 0) && arrowName.Contains("Down"))
             {
-                Destroy(currentCollidingArrow);
-                currentCollidingArrow = null;
+                DestroyArrow(currentCollidingArrow);
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: DownArrow");
@@ -76,8 +86,7 @@ public class ImageCollisionHandler : MonoBehaviour
             }
             else
             {
-                Destroy(currentCollidingArrow);
-                currentCollidingArrow = null;
+                DestroyArrow(currentCollidingArrow);
                 score--;
                 UpdateScoreText();
                 Debug.Log("Incorrect key pressed");
@@ -85,9 +94,18 @@ public class ImageCollisionHandler : MonoBehaviour
         }
     }
 
-    void PlaySound()
+    private void DestroyArrow(GameObject arrow)
     {
-        //Instantiate(ForgeSFX);
+        if (arrow != null)
+        {
+            Destroy(arrow);
+            currentCollidingArrow = null;
+            ArrowManager arrowManager = FindAnyObjectByType<ArrowManager>();
+            if (arrowManager != null)
+            {
+                arrowManager.totalArrowsDestroyed++;
+            }
+        }
     }
 
     private void CheckForCollisions()
@@ -130,6 +148,30 @@ public class ImageCollisionHandler : MonoBehaviour
     private void Update()
     {
         CheckForCollisions();
+
+        // Проверяем, все ли стрелки были созданы и уничтожены
+        ArrowManager arrowManager = FindAnyObjectByType<ArrowManager>();
+        if (arrowManager != null && arrowManager.totalArrowsSpawned > 0 && arrowManager.totalArrowsSpawned == arrowManager.totalArrowsDestroyed)
+        {
+            // Проверяем счет
+            int maxScore = arrowManager.CalculateMaxScore();
+            if (score < 0.75f * maxScore)
+            {
+                // Показываем кнопку "Return"
+                if (returnButton != null)
+                {
+                    returnButton.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                // Показываем надпись "Win"
+                if (winText != null)
+                {
+                    winText.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 
     private void UpdateScoreText()
@@ -139,10 +181,17 @@ public class ImageCollisionHandler : MonoBehaviour
             scoreText.text = "Score: " + score;
         }
     }
+
     private void Awake()
     {
         // Находим действие Jump в вашем Action Map
         var gameplayActions = inputActions.FindActionMap("Player"); // Замените "Actions" на точное название вашего Action Map
         var moveAction = gameplayActions.FindAction("Move");
+    }
+
+    // Метод для перезагрузки сцены
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
