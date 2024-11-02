@@ -1009,9 +1009,9 @@ MonoBehaviour:
   - {fileID: 2043494584475251043, guid: fae22f75a171c25479ac467fd6450790, type: 3}
   - {fileID: 5378877800865289436, guid: 5f31b1782ef389742b1fa29262bc35e8, type: 3}
   targetCircle: {fileID: 834554499}
-  spawnInterval: 1
-  arrowSpeed: 200
-  sequence: 10203041234111020304123411
+  spawnInterval: 0.4
+  arrowSpeed: 400
+  sequence: 010203041234123412341111222233334444
   canvasTransform: {fileID: 1534488247}
 --- !u!1001 &6560425764713373032
 PrefabInstance:
@@ -1101,6 +1101,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 357562867}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: HitSFX.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: 'HitSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 315715365850481284, guid: 0fe5f966d1ebaea429e741de026773d0, type: 3}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: 'HitSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 315715365850481284, guid: 01e8e48e2c3995e4bb5d778a839f2f72, type: 3}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: 'HitSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 315715365850481284, guid: 905b2766d46350842b30b825a8ba83a2, type: 3}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: 'HitSFX.Array.data[3]'
+      value: 
+      objectReference: {fileID: 315715365850481284, guid: 964e6992216e147429d4424fa535d2df, type: 3}
     - target: {fileID: 6923748508171335575, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
       propertyPath: m_Name
       value: Circle
@@ -1111,9 +1135,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6923748508171335575, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6560425764713373036}
-    - targetCorrespondingSourceObject: {fileID: 6923748508171335575, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6560425764713373038}
   m_SourcePrefab: {fileID: 100100000, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
 --- !u!224 &6560425764713373033 stripped
@@ -1121,23 +1142,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2790106963475779298, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
   m_PrefabInstance: {fileID: 6560425764713373032}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6560425764713373036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555189494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c1a9556f3dff84fb9c7eb65bfac6c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 357562867}
-  arrowLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!50 &6560425764713373038
 Rigidbody2D:
   serializedVersion: 5

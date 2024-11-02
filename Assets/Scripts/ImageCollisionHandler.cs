@@ -13,6 +13,7 @@ public class ImageCollisionHandler : MonoBehaviour
     public LayerMask arrowLayer; // Слой, на котором находятся стрелки
     public InputActionAsset inputActions;
     private InputAction moveAction;
+    public GameObject[] HitSFX;
 
     private bool wasArrowMissed = false; // Флаг, указывающий, что стрелка была пропущена
 
@@ -44,6 +45,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: LeftArrow");
+                Instantiate(HitSFX[0]);
             }
             else if ((moveInput.x > 0) && arrowName.Contains("Right"))
             {
@@ -52,6 +54,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: RightArrow");
+                Instantiate(HitSFX[1]);
             }
             else if ((moveInput.y > 0) && arrowName.Contains("Up"))
             {
@@ -60,6 +63,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: UpArrow");
+                Instantiate(HitSFX[2]);
             }
             else if ((moveInput.y < 0) && arrowName.Contains("Down"))
             {
@@ -68,6 +72,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 score++;
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: DownArrow");
+                Instantiate(HitSFX[3]);
             }
             else
             {
@@ -78,6 +83,11 @@ public class ImageCollisionHandler : MonoBehaviour
                 Debug.Log("Incorrect key pressed");
             }
         }
+    }
+
+    void PlaySound()
+    {
+        //Instantiate(ForgeSFX);
     }
 
     private void CheckForCollisions()
