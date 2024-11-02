@@ -71,6 +71,8 @@ public class ImageCollisionHandler : MonoBehaviour
             }
             else
             {
+                Destroy(currentCollidingArrow);
+                currentCollidingArrow = null;
                 score--;
                 UpdateScoreText();
                 Debug.Log("Incorrect key pressed");
