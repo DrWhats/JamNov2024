@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SliderQTE : MonoBehaviour
@@ -7,6 +9,32 @@ public class SliderQTE : MonoBehaviour
     public RectTransform targetZone;
     public float speed = 100f;
     private bool movingRight = true;
+
+    public static event Action SuccessHit;
+
+    public InputActionAsset inputActions; // Ссылка на ваш Input Action Asset
+    private InputAction jumpAction;
+
+
+    private void Awake()
+    {
+        // Находим действие Jump в вашем Action Map
+        var gameplayActions = inputActions.FindActionMap("Player"); // Замените "Actions" на точное название вашего Action Map
+        jumpAction = gameplayActions.FindAction("Jump"); // Замените "Jump" на точное название вашего действия
+    }
+
+    private void OnEnable()
+    {
+        jumpAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (jumpAction != null)
+        {
+            jumpAction.Disable();
+        }
+    }
 
     void Update()
     {
@@ -37,16 +65,11 @@ public class SliderQTE : MonoBehaviour
 
     void CheckForInput()
     {
-        
-        if (IsSliderInZone())
+        // Проверяем, если объект в нужной зоне и если действие прыжка выполнено
+        if (IsSliderInZone() && jumpAction.WasPerformedThisFrame())
         {
-            //Debug.Log("IN ZONE");
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Успех!");
-                
-            }
+            Debug.Log("Success");
+            SuccessHit?.Invoke();
         }
     }
 
