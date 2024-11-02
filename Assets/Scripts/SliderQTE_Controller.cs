@@ -3,10 +3,9 @@ using UnityEngine;
 public class SliderQTE_Controller : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] SlidersPrefabs;
 
     [SerializeField] Animator Hammer;
-
+    [SerializeField] GameObject slider;
 
     [SerializeField] Transform root;
     [SerializeField] GameObject[] ObjectSteps;
@@ -16,6 +15,7 @@ public class SliderQTE_Controller : MonoBehaviour
     private void Awake()
     {
         currentObject = Instantiate(ObjectSteps[stepIndex], root);
+        slider = GameObject.Find("SliderQTE");
     }
 
     private void OnEnable()
@@ -44,7 +44,12 @@ public class SliderQTE_Controller : MonoBehaviour
             currentObject = Instantiate(ObjectSteps[stepIndex + 1], root);
             stepIndex += 1;
             Destroy(prevObj);
-            
+
+        }
+        else
+        {
+            Debug.Log("Game Over");
+            slider.SetActive(false);
         }
     }
 }
