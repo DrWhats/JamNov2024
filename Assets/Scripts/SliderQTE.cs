@@ -21,6 +21,7 @@ public class SliderQTE : MonoBehaviour
         // Находим действие Jump в вашем Action Map
         var gameplayActions = inputActions.FindActionMap("Player"); // Замените "Actions" на точное название вашего Action Map
         jumpAction = gameplayActions.FindAction("Jump"); // Замените "Jump" на точное название вашего действия
+        RandomizeTargetPosition();
     }
 
     private void OnEnable()
@@ -34,6 +35,14 @@ public class SliderQTE : MonoBehaviour
         {
             jumpAction.Disable();
         }
+    }
+
+    void RandomizeTargetPosition()
+    {
+        Debug.Log("Меняю позицию");
+        var new_x = UnityEngine.Random.Range(-50, 50);
+        targetZone.transform.localPosition = new Vector3(new_x, targetZone.transform.localPosition.y, targetZone.transform.localPosition.z);
+
     }
 
     void Update()
@@ -70,6 +79,7 @@ public class SliderQTE : MonoBehaviour
         {
             Debug.Log("Success");
             SuccessHit?.Invoke();
+            RandomizeTargetPosition();
         }
     }
 
