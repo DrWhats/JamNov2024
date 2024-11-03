@@ -6,7 +6,8 @@ public class SceneLoader : MonoBehaviour
     public void SuccessMiniGame(int actId)
     {
         PlayerPrefs.SetInt("LastAct", actId);
-        SceneManager.LoadScene("Forge_Main");
+        ActManager.Instance.SetActState(ActManager.ActState.ActDone);
+        SceneManager.LoadScene("Test_NPC");
     }
 
     public void FailedMiniGame()

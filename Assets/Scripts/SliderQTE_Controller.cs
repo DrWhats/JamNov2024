@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 public class SliderQTE_Controller : MonoBehaviour
 {
 
-    [SerializeField] int actId = 0;
     [SerializeField] Animator Hammer;
     [SerializeField] GameObject slider;
     [SerializeField] GameObject Panel;
-    [SerializeField] Transform root;
     [SerializeField] GameObject[] ObjectSteps;
     [SerializeField] GameObject finalStep;
+    [SerializeField] Transform root;
 
     private GameObject currentObject;
     private int stepIndex = 0;
@@ -47,8 +46,7 @@ public class SliderQTE_Controller : MonoBehaviour
         if (stepIndex < ObjectSteps.Length - 1)
         {
             var prevObj = currentObject;
-            currentObject = Instantiate(ObjectSteps[stepIndex + 1]);
-            currentObject.transform.SetParent(transform, false);
+            currentObject = Instantiate(ObjectSteps[stepIndex + 1], root);
             stepIndex += 1;
             Destroy(prevObj);
             slider.gameObject.SetActive(false);
@@ -62,8 +60,9 @@ public class SliderQTE_Controller : MonoBehaviour
             Debug.Log("Game Over");
             Panel.SetActive(true);
             var prevObj = currentObject;
-            currentObject = Instantiate(finalStep);
-            currentObject.transform.SetParent(root, false);
+            currentObject = Instantiate(finalStep, root);
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            ActManager.Instance.SetActState(ActManager.ActState.ActDone);
             Destroy(prevObj);
             slider.gameObject.SetActive(false);
             
