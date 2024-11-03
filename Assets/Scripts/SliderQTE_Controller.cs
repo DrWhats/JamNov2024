@@ -1,19 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SliderQTE_Controller : MonoBehaviour
 {
 
-
+    [SerializeField] int actId = 0;
     [SerializeField] Animator Hammer;
     [SerializeField] GameObject slider;
-
+    [SerializeField] GameObject Panel;
     [SerializeField] Transform root;
     [SerializeField] GameObject[] ObjectSteps;
     [SerializeField] GameObject finalStep;
-    [SerializeField] GameObject currentObject;
-    [SerializeField] int stepIndex = 0;
 
+    private GameObject currentObject;
+    private int stepIndex = 0;
     private Animator animator;
 
     private void Awake()
@@ -59,14 +60,15 @@ public class SliderQTE_Controller : MonoBehaviour
         else
         {
             Debug.Log("Game Over");
+            Panel.SetActive(true);
             var prevObj = currentObject;
             currentObject = Instantiate(finalStep);
             currentObject.transform.SetParent(root, false);
             Destroy(prevObj);
             slider.gameObject.SetActive(false);
+            
         }
 
-        
     }
 
     IEnumerator WaitForAnimation()
@@ -86,5 +88,11 @@ public class SliderQTE_Controller : MonoBehaviour
 
         // Показываем объект после окончания анимации
         slider.gameObject.SetActive(true);
+    }
+
+    public void SuccessMiniGame()
+    {
+        PlayerPrefs.SetInt("LastAct", actId);
+        SceneManager.LoadScene("Forge_Main");
     }
 }
