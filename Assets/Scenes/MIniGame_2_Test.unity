@@ -1797,6 +1797,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 357562867}
     - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
+      propertyPath: inputActions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+    - target: {fileID: 5132174498478431258, guid: 98280a7587f4cd14c856d41f175ce432, type: 3}
       propertyPath: returnButton
       value: 
       objectReference: {fileID: 675206026}
