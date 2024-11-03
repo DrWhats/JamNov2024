@@ -115,7 +115,6 @@ public class ImageCollisionHandler : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.zero, Color.red);
         if (hit.collider != null)
         {
-            Debug.Log("х”Ќй€");
             // ≈сли луч попал в коллайдер стрелки
             if (hit.collider.gameObject.name.Contains("Up") ||
                 hit.collider.gameObject.name.Contains("Down") ||
