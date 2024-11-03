@@ -13,6 +13,7 @@ public class CylinderController : MonoBehaviour
     public RectTransform targetZone; // Изображение для отображения зеленого сектора
     public TextMeshProUGUI scoreText; // Текстовое поле для отображения счета
     public TextMeshProUGUI winText; // Текстовое поле для отображения победного сообщения
+    public GameObject[] PinSFX;
 
     private int currentCylinderIndex = 0; // Индекс текущего цилиндра
     private float power = 0f; // Текущая сила удара
@@ -79,11 +80,13 @@ public class CylinderController : MonoBehaviour
             {
                 // Успешный удар
                 MoveCylinder();
+                Instantiate(PinSFX[0]);
             }
             else
             {
                 // Неудачный удар, возвращаем цилиндры на исходные локальные позиции
                 ResetCylinders();
+                Instantiate(PinSFX[1]);
             }
 
             // Сбрасываем силу удара

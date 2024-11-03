@@ -505,6 +505,7 @@ MonoBehaviour:
   targetZone: {fileID: 2006597074}
   scoreText: {fileID: 357562867}
   winText: {fileID: 1158843593}
+  PinSFX: []
 --- !u!4 &269059389
 Transform:
   m_ObjectHideFlags: 0
@@ -1007,6 +1008,9 @@ MonoBehaviour:
   targetZone: {fileID: 2006597074}
   scoreText: {fileID: 357562867}
   winText: {fileID: 1158843593}
+  PinSFX:
+  - {fileID: 315715365850481284, guid: 79c9a7fe9d94bcd4ab79274aca841709, type: 3}
+  - {fileID: 315715365850481284, guid: 7cbf9f525d9c5864fb44a41c26765f3f, type: 3}
 --- !u!1 &685576888
 GameObject:
   m_ObjectHideFlags: 0
