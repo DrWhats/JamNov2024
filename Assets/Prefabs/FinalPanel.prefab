@@ -154,12 +154,12 @@ GameObject:
   - component: {fileID: 9189942527451718966}
   - component: {fileID: 2137466687644016963}
   m_Layer: 5
-  m_Name: SwordFinalPanel
+  m_Name: FinalPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4300140209514689778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -231,6 +231,8 @@ GameObject:
   - component: {fileID: 6286026505073051081}
   - component: {fileID: 8953475886196384044}
   - component: {fileID: 3590574253589036092}
+  - component: {fileID: 2956326632523983821}
+  - component: {fileID: 5599675223369728976}
   m_Layer: 5
   m_Name: Give_Button
   m_TagString: Untagged
@@ -340,9 +342,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SliderQTE_Controller, Assembly-CSharp
+      - m_Target: {fileID: 2956326632523983821}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: SuccessMiniGame
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5599675223369728976}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -352,6 +366,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2956326632523983821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882409769669870998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6f2c227c3b944e85a39d9410d9e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5599675223369728976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882409769669870998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d26e758f454a7d479646b91973f9d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXPrefab: {fileID: 315715365850481284, guid: 82178b8179e5255499a170c37ed15f65, type: 3}
 --- !u!1 &8751920614659085550
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,14 +12,12 @@ public class CylinderController : MonoBehaviour
     public float targetZoneWidth = 0.2f; // Ширина зеленого сектора
     public RectTransform targetZone; // Изображение для отображения зеленого сектора
     public TextMeshProUGUI scoreText; // Текстовое поле для отображения счета
-    public TextMeshProUGUI winText; // Текстовое поле для отображения победного сообщения
+    public GameObject winText; // Текстовое поле для отображения победного сообщения
     public GameObject[] PinSFX;
 
     private int currentCylinderIndex = 0; // Индекс текущего цилиндра
     private float power = 0f; // Текущая сила удара
     private Vector3[] originalLocalPositions; // Оригинальные локальные позиции цилиндров
-    private float greenZoneStart; // Начало зеленого сектора
-    private float greenZoneEnd; // Конец зеленого сектора
 
     private void Awake()
     {

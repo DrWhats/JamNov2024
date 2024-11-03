@@ -17,6 +17,9 @@ public class ImageCollisionHandler : MonoBehaviour
     public GameObject[] HitSFX;
     public Button returnButton; // Ссылка на кнопку "Return"
     public TextMeshProUGUI winText; // Ссылка на TextMeshProUGUI для отображения надписи "Win"
+    [SerializeField] private GameObject WinPanel;
+    [SerializeField] private GameObject failPanel;
+    [SerializeField] Animator animator;
 
     private bool wasArrowMissed = false; // Флаг, указывающий, что стрелка была пропущена
 
@@ -48,8 +51,10 @@ public class ImageCollisionHandler : MonoBehaviour
     {
         // Получаем вектор движения
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
+        animator.Play("Hit");
         if (currentCollidingArrow != null)
         {
+
             string arrowName = currentCollidingArrow.name;
             // Проверяем направление
             if ((moveInput.x < 0) && arrowName.Contains("Left"))
@@ -159,16 +164,12 @@ public class ImageCollisionHandler : MonoBehaviour
                 // Показываем кнопку "Return"
                 if (returnButton != null)
                 {
-                    returnButton.gameObject.SetActive(true);
+                    failPanel.SetActive(true);
                 }
             }
             else
             {
-                // Показываем надпись "Win"
-                if (winText != null)
-                {
-                    winText.gameObject.SetActive(true);
-                }
+                WinPanel.SetActive(true);
             }
         }
     }

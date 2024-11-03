@@ -90,9 +90,4 @@ public class SliderQTE_Controller : MonoBehaviour
         slider.gameObject.SetActive(true);
     }
 
-    public void SuccessMiniGame()
-    {
-        PlayerPrefs.SetInt("LastAct", actId);
-        SceneManager.LoadScene("Forge_Main");
-    }
 }

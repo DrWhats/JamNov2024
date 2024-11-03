@@ -18,7 +18,7 @@ public class MusicPlayer : MonoBehaviour
         }
         else
         {
-            Debug.LogError("AudioSource not found on " + gameObject.name);
+            Debug.LogWarning("AudioSource not found on " + gameObject.name);
         }
     }
 
