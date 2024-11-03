@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1449434829784374723}
   - component: {fileID: 2460172537379303451}
   - component: {fileID: 2279461667718073917}
+  - component: {fileID: 999182375576257332}
   m_Layer: 0
   m_Name: Sword_1
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForgeSFX: {fileID: 315715365850481284, guid: bf7f616b843c61b4dab65d3311728b30, type: 3}
+  delayBeforeEnableCollider: 2
 --- !u!54 &2279461667718073917
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,3 +152,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!95 &999182375576257332
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641827738338037658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f5f6b11b4191244082cd7947f547a71, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -12,33 +12,30 @@ public class SliderQTE : MonoBehaviour
 
     public static event Action SuccessHit;
 
-    public InputActionAsset inputActions; // Ссылка на ваш Input Action Asset
-    private InputAction jumpAction;
-
 
     private void Awake()
     {
-        // Находим действие Jump в вашем Action Map
-        var gameplayActions = inputActions.FindActionMap("Player"); // Замените "Actions" на точное название вашего Action Map
-        jumpAction = gameplayActions.FindAction("Jump"); // Замените "Jump" на точное название вашего действия
+
+        RandomizeTargetPosition();
     }
 
-    private void OnEnable()
+    void RandomizeTargetPosition()
     {
-        jumpAction.Enable();
-    }
+        Debug.Log("Меняю позицию");
+        var new_x = UnityEngine.Random.Range(-50, 50);
+        targetZone.transform.localPosition = new Vector3(new_x, targetZone.transform.localPosition.y, targetZone.transform.localPosition.z);
 
-    private void OnDisable()
-    {
-        if (jumpAction != null)
-        {
-            jumpAction.Disable();
-        }
     }
 
     void Update()
     {
         MoveSlider();
+        //CheckForInput();
+    }
+
+    public void OnJump(InputValue value)
+    {
+        Debug.Log("JUMP");
         CheckForInput();
     }
 
@@ -66,10 +63,11 @@ public class SliderQTE : MonoBehaviour
     void CheckForInput()
     {
         // Проверяем, если объект в нужной зоне и если действие прыжка выполнено
-        if (IsSliderInZone() && jumpAction.WasPerformedThisFrame())
+        if (IsSliderInZone())
         {
             Debug.Log("Success");
             SuccessHit?.Invoke();
+            RandomizeTargetPosition();
         }
     }
 
