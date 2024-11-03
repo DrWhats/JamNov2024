@@ -6,9 +6,11 @@ public class CylinderController : MonoBehaviour
 {
     public GameObject[] cylinders; // Массив цилиндров
     public Slider powerSlider; // Ползунок для силы удара
-    public float yOffset = 1f; // Значение смещения по оси Y
-    public float greenZoneWidth = 0.2f; // Ширина зеленого сектора
-    public Image greenZoneImage; // Изображение для отображения зеленого сектора
+    public float xOffset = 0f; // Значение смещения по оси X
+    public float yOffset = 0f; // Значение смещения по оси Y
+    public float zOffset = 0f; // Значение смещения по оси Z
+    public float targetZoneWidth = 0.2f; // Ширина зеленого сектора
+    public RectTransform targetZone; // Изображение для отображения зеленого сектора
     public TextMeshProUGUI scoreText; // Текстовое поле для отображения счета
     public TextMeshProUGUI winText; // Текстовое поле для отображения победного сообщения
 
@@ -17,6 +19,26 @@ public class CylinderController : MonoBehaviour
     private Vector3[] originalLocalPositions; // Оригинальные локальные позиции цилиндров
     private float greenZoneStart; // Начало зеленого сектора
     private float greenZoneEnd; // Конец зеленого сектора
+
+    private void Awake()
+    {
+
+        RandomizeTargetPosition();
+    }
+
+    void RandomizeTargetPosition()
+    {
+        Debug.Log("Меняю позицию");
+        var new_x = UnityEngine.Random.Range(-50, 50);
+        targetZone.transform.localPosition = new Vector3(new_x, targetZone.transform.localPosition.y, targetZone.transform.localPosition.z);
+
+    }
+
+    bool IsSliderInZone()
+    {
+        RectTransform sliderHandle = powerSlider.handleRect;
+        return RectTransformUtility.RectangleContainsScreenPoint(targetZone, sliderHandle.position);
+    }
 
     void Start()
     {
@@ -30,9 +52,6 @@ public class CylinderController : MonoBehaviour
         // Инициализация текстовых полей
         UpdateScoreText();
         winText.gameObject.SetActive(false); // Скрываем победное сообщение
-
-        // Рандомизируем зеленый сектор
-        RandomizeGreenZone();
     }
 
     void Update()
@@ -56,7 +75,7 @@ public class CylinderController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             // Проверяем, попали ли мы в зеленый сектор
-            if (power >= greenZoneStart && power <= greenZoneEnd)
+            if (IsSliderInZone())
             {
                 // Успешный удар
                 MoveCylinder();
@@ -72,15 +91,17 @@ public class CylinderController : MonoBehaviour
             powerSlider.value = 0f;
 
             // Рандомизируем зеленый сектор для следующего цилиндра
-            RandomizeGreenZone();
+            RandomizeTargetPosition();
         }
     }
 
     void MoveCylinder()
     {
-        // Перемещаем текущий цилиндр на новую локальную позицию по оси Y
+        // Перемещаем текущий цилиндр на новую локальную позицию по осям
         Vector3 newLocalPosition = cylinders[currentCylinderIndex].transform.localPosition;
+        newLocalPosition.x += xOffset;
         newLocalPosition.y += yOffset;
+        newLocalPosition.z += zOffset;
         cylinders[currentCylinderIndex].transform.localPosition = newLocalPosition;
 
         // Переходим к следующему цилиндру
@@ -123,19 +144,5 @@ public class CylinderController : MonoBehaviour
 
         // Выключаем ползунок
         powerSlider.gameObject.SetActive(false);
-    }
-
-    void RandomizeGreenZone()
-    {
-        // Рандомизируем начало зеленого сектора
-        greenZoneStart = Random.Range(0f, 1f - greenZoneWidth);
-        greenZoneEnd = greenZoneStart + greenZoneWidth;
-
-        // Обновляем позицию и размер зеленого сектора
-        RectTransform greenZoneRect = greenZoneImage.rectTransform;
-        greenZoneRect.anchorMin = new Vector2(greenZoneStart, 0f);
-        greenZoneRect.anchorMax = new Vector2(greenZoneEnd, 1f);
-        greenZoneRect.offsetMin = Vector2.zero;
-        greenZoneRect.offsetMax = Vector2.zero;
     }
 }
