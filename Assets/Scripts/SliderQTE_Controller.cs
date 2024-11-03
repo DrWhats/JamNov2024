@@ -10,6 +10,7 @@ public class SliderQTE_Controller : MonoBehaviour
 
     [SerializeField] Transform root;
     [SerializeField] GameObject[] ObjectSteps;
+    [SerializeField] GameObject finalStep;
     [SerializeField] GameObject currentObject;
     [SerializeField] int stepIndex = 0;
 
@@ -58,7 +59,11 @@ public class SliderQTE_Controller : MonoBehaviour
         else
         {
             Debug.Log("Game Over");
-            slider.SetActive(false);
+            var prevObj = currentObject;
+            currentObject = Instantiate(finalStep);
+            currentObject.transform.SetParent(root, false);
+            Destroy(prevObj);
+            slider.gameObject.SetActive(false);
         }
 
         

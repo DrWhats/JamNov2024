@@ -71,6 +71,7 @@ public class SliderQTE : MonoBehaviour
         }
     }
 
+
     bool IsSliderInZone()
     {
         RectTransform sliderHandle = slider.handleRect;
