@@ -66,10 +66,11 @@ public class SliderQTE_Controller : MonoBehaviour
             Debug.Log("Game Over");
             Panel.SetActive(true);
             var prevObj = currentObject;
+            Destroy(prevObj);
             currentObject = Instantiate(finalStep, root);
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             ActManager.Instance.SetActState(ActManager.ActState.ActDone);
-            Destroy(prevObj);
+            //Destroy(prevObj);
             slider.gameObject.SetActive(false);
             
         }
