@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7e6914dd060062746b6d9ac39c9d575b
+  - enabled: 1
     path: Assets/Scenes/Forge_Main.unity
     guid: 184312d622684af43a18558c4808dc64
   - enabled: 1
@@ -38,9 +41,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Armor_3.unity
     guid: 08559ec1e21321347b0c1a7fbca7d182
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 7e6914dd060062746b6d9ac39c9d575b
   - enabled: 1
     path: Assets/Scenes/Forge_Main_Final.unity
     guid: d151a840d618f1d478caa23b932adaaa
