@@ -15,8 +15,8 @@ public class ImageCollisionHandler : MonoBehaviour
     public InputActionAsset inputActions;
     private InputAction moveAction;
     public GameObject[] HitSFX;
+    public GameObject[] visualFeedbackObjects; // Массив объектов для визуальной обратной связи
     public Button returnButton; // Ссылка на кнопку "Return"
-    public TextMeshProUGUI winText; // Ссылка на TextMeshProUGUI для отображения надписи "Win"
     [SerializeField] private GameObject WinPanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] Animator animator;
@@ -36,9 +36,14 @@ public class ImageCollisionHandler : MonoBehaviour
             returnButton.gameObject.SetActive(false);
             returnButton.onClick.AddListener(RestartScene); // Привязываем метод RestartScene к событию нажатия кнопки
         }
-        if (winText != null)
+
+        // Деактивируем все объекты визуальной обратной связи при старте
+        foreach (var obj in visualFeedbackObjects)
         {
-            winText.gameObject.SetActive(false);
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 
@@ -74,6 +79,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: LeftArrow");
                 Instantiate(HitSFX[0]);
+                UpdateVisualFeedback(0);
             }
             else if ((moveInput.x > 0) && arrowName.Contains("Right"))
             {
@@ -82,6 +88,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: RightArrow");
                 Instantiate(HitSFX[1]);
+                UpdateVisualFeedback(1);
             }
             else if ((moveInput.y > 0) && arrowName.Contains("Up"))
             {
@@ -90,6 +97,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: UpArrow");
                 Instantiate(HitSFX[2]);
+                UpdateVisualFeedback(2);
             }
             else if ((moveInput.y < 0) && arrowName.Contains("Down"))
             {
@@ -98,6 +106,7 @@ public class ImageCollisionHandler : MonoBehaviour
                 UpdateScoreText();
                 Debug.Log("Correct key pressed: DownArrow");
                 Instantiate(HitSFX[3]);
+                UpdateVisualFeedback(3);
             }
             else
             {
@@ -194,6 +203,7 @@ public class ImageCollisionHandler : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
         // Находим действие Jump в вашем Action Map
         var gameplayActions = inputActions.FindActionMap("Player"); // Замените "Actions" на точное название вашего Action Map
         var moveAction = gameplayActions.FindAction("Move");
@@ -203,5 +213,17 @@ public class ImageCollisionHandler : MonoBehaviour
     private void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Метод для обновления визуальной обратной связи
+    private void UpdateVisualFeedback(int index)
+    {
+        for (int i = 0; i < visualFeedbackObjects.Length; i++)
+        {
+            if (visualFeedbackObjects[i] != null)
+            {
+                visualFeedbackObjects[i].SetActive(i == index);
+            }
+        }
     }
 }
