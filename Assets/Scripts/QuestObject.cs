@@ -24,14 +24,16 @@ public class QuestObject : MonoBehaviour
     {
         if (objectType == ObjectType.End)
         {
-            SceneManager.LoadScene("Sleep");
             Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("Sleep");
+            //Cursor.lockState = CursorLockMode.None;
         }
 
         if (objectType == ObjectType.Quest)
         {
-            ActManager.Instance.StartQuest();
             Cursor.lockState = CursorLockMode.None;
+            ActManager.Instance.StartQuest();
+            //Cursor.lockState = CursorLockMode.None;
         }
         if (objectType == ObjectType.Start)
         {

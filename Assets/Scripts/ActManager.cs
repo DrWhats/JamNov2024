@@ -131,7 +131,7 @@ public class ActManager : MonoBehaviour
         CurrentState = ActState.None;
         Debug.Log($"Moving to Act {CurrentAct}");
 
-        Cursor.lockState = CursorLockMode.Locked;
+    
         OnNextAct?.Invoke();
     }
 }
