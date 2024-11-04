@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4a308dae7ffd048a8b0eb8d5ae4a02, type: 3}
   m_Name: Flint
   m_EditorClassIdentifier: 
-  characterPhoto: {fileID: 0}
+  characterPhoto: {fileID: 21300000, guid: 6da53e32a8d9c224ab2efcc0b0933422, type: 3}
   characterName: "\u0424\u043B\u0438\u043D\u0442"
