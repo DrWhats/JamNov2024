@@ -11,6 +11,6 @@ public class Sleep : MonoBehaviour
 
     public void GoNext()
     {
-        SceneManager.LoadScene("Test_NPC");
+        SceneManager.LoadScene("Forge_Main");
     }
 }

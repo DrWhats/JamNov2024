@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df99079b466a7f34589d69f844185617, type: 3}
+  m_Name: Act_4
+  m_EditorClassIdentifier: 
+  ActId: 4
+  actors:
+  - {fileID: 4534041278761376696, guid: 0d7009720d77c3e479d16811188e78a8, type: 3}
+  type: 0
+  questSceneName: Sword_2
+  endActors:
+  - {fileID: 5078344787204466161, guid: f8da89c8b31ca284dad94b2d426f0b2f, type: 3}

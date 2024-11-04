@@ -23,7 +23,8 @@ public class ActManager : MonoBehaviour
     // События для уведомления об изменении состояния акта
     public event Action<ActState> OnActStateChanged;
     public event Action OnNextAct;
-
+    [SerializeField] Transform spawner;
+ 
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +36,8 @@ public class ActManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
     private void OnEnable()
@@ -49,6 +52,26 @@ public class ActManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
+        GameObject spawnerObject = GameObject.Find("NPC_Spawn");
+
+        // Проверка на null
+        if (spawnerObject == null)
+        {
+            Debug.LogWarning("NPC_Spawn object not found!");
+        }
+        else
+        {
+            // Получение компонента Transform
+            spawner = spawnerObject.GetComponent<Transform>();
+
+            // Проверка на null для компонента Transform
+            if (spawner == null)
+            {
+                Debug.LogWarning("Transform component not found on NPC_Spawn object!");
+            }
+        }
+
         if (CurrentState == ActState.ActDone)
         {
             DoneAct();
@@ -64,7 +87,7 @@ public class ActManager : MonoBehaviour
 
         foreach (GameObject person in currentactObject.actors)
         {
-            Instantiate(person);
+            Instantiate(person, spawner.position, spawner.rotation);
         }
     }
 
@@ -74,7 +97,7 @@ public class ActManager : MonoBehaviour
         currentQuest = currentactObject.questSceneName;
         foreach (GameObject person in currentactObject.endActors)
         {
-            Instantiate(person);
+            Instantiate(person, spawner.position, spawner.rotation);
         }
     }
 
@@ -83,7 +106,8 @@ public class ActManager : MonoBehaviour
         if (!string.IsNullOrEmpty(currentQuest)) {
             SceneManager.LoadScene(currentQuest);
         }
-        
+
+
     }
 
     public void DoneQuest()
@@ -107,7 +131,7 @@ public class ActManager : MonoBehaviour
         CurrentState = ActState.None;
         Debug.Log($"Moving to Act {CurrentAct}");
 
-        // Уведомление подписчиков о переходе к следующему акту
+        Cursor.lockState = CursorLockMode.Locked;
         OnNextAct?.Invoke();
     }
 }

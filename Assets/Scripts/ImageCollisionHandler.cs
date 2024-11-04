@@ -47,14 +47,24 @@ public class ImageCollisionHandler : MonoBehaviour
         moveAction.performed -= ctx => CheckForInput(); // Отписываемся от события при уничтожении объекта
     }
 
+    private void OnDisable()
+    {
+        moveAction.performed -= ctx => CheckForInput(); // Отписываемся от события при отключении объекта
+    }
+
     void CheckForInput()
     {
         // Получаем вектор движения
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        animator.Play("Hit");
+
+        // Проверяем, не является ли animator null
+        if (animator != null)
+        {
+            animator.Play("Hit");
+        }
+
         if (currentCollidingArrow != null)
         {
-
             string arrowName = currentCollidingArrow.name;
             // Проверяем направление
             if ((moveInput.x < 0) && arrowName.Contains("Left"))

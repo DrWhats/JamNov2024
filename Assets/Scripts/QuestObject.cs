@@ -16,14 +16,27 @@ public class QuestObject : MonoBehaviour
     void Start()
     {
         ActManager.Instance.OnActStateChanged += OnActStateChanged;
+        Cursor.lockState = CursorLockMode.Locked;
         OnStart();
     }
 
     public void Interact()
     {
-        if (objectType == ObjectType.End) SceneManager.LoadScene("Sleep");
-        if (objectType == ObjectType.Quest) ActManager.Instance.StartQuest();
-        if (objectType == ObjectType.Start) ActManager.Instance.StartAct();
+        if (objectType == ObjectType.End)
+        {
+            SceneManager.LoadScene("Sleep");
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (objectType == ObjectType.Quest)
+        {
+            ActManager.Instance.StartQuest();
+            Cursor.lockState = CursorLockMode.None;
+        }
+        if (objectType == ObjectType.Start)
+        {
+            ActManager.Instance.StartAct();
+        }
     }
 
 

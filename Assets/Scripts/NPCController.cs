@@ -11,6 +11,9 @@ public class NPCController : MonoBehaviour
     private NavMeshAgent agent;
     private bool isMovingToTarget = false;
     private bool isMovingToExit = false;
+    private Animator animator;
+    private int animIDSpeed;
+
 
 
     public void SetStateInProgress()
@@ -29,6 +32,15 @@ public class NPCController : MonoBehaviour
 
     void Awake()
     {
+        startPoint = GameObject.Find("Start").GetComponent<Transform>();
+        targetPoint = GameObject.Find("Target").GetComponent<Transform>();
+        exitPoint = GameObject.Find("Exit").GetComponent<Transform>();
+
+
+
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        animIDSpeed = Animator.StringToHash("Speed");
         ActManager.Instance.OnActStateChanged += OnActStateChanged;
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(startPoint.position);
@@ -41,6 +53,12 @@ public class NPCController : MonoBehaviour
         {
             MoveToExit();
         }
+
+        AssignAnimationIDs();
+    }
+
+    private void AssignAnimationIDs()
+    {
     }
 
     void Update()
@@ -54,6 +72,9 @@ public class NPCController : MonoBehaviour
         {
             isMovingToExit = false;
         }
+
+        float speed = agent.velocity.magnitude;
+        animator.SetFloat(animIDSpeed, speed);
     }
 
     public void MoveToTarget()
