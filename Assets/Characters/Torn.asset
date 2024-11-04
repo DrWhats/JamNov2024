@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4a308dae7ffd048a8b0eb8d5ae4a02, type: 3}
   m_Name: Torn
   m_EditorClassIdentifier: 
-  characterPhoto: {fileID: 0}
+  characterPhoto: {fileID: 21300000, guid: ffc1baad7188d894e9b5f63363fc74ed, type: 3}
   characterName: "\u0422\u043E\u0440\u043D"

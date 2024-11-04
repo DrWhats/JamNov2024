@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4a308dae7ffd048a8b0eb8d5ae4a02, type: 3}
   m_Name: Rikkar
   m_EditorClassIdentifier: 
-  characterPhoto: {fileID: 0}
+  characterPhoto: {fileID: 21300000, guid: 2637599e5ca410143885607891b197f7, type: 3}
   characterName: "\u0420\u0438\u043A\u043A\u0430\u0440"
