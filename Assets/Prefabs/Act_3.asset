@@ -15,7 +15,7 @@ MonoBehaviour:
   ActId: 3
   actors:
   - {fileID: 5234562770233709300, guid: e904ec21699ed164c89e2e114cb10e66, type: 3}
-  type: 2
-  questSceneName: Shield_1
+  type: 0
+  questSceneName: Sword_2
   endActors:
   - {fileID: 7112583317933070282, guid: d4ddf876b28310d46a740649329c0f88, type: 3}

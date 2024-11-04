@@ -55,6 +55,9 @@ public class CylinderController : MonoBehaviour
 
     void Update()
     {
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (currentCylinderIndex < cylinders.Length)
         {
             HandlePowerInput();

@@ -41,6 +41,12 @@ public class SliderQTE_Controller : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     void ChangePrefab()
     {
         if (stepIndex < ObjectSteps.Length - 1)

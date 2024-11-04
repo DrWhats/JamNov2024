@@ -15,7 +15,7 @@ MonoBehaviour:
   ActId: 1
   actors:
   - {fileID: 4529717455997160265, guid: 09d6a56793b37504a8bc9b8aeda00494, type: 3}
-  type: 0
-  questSceneName: Sword_1
+  type: 1
+  questSceneName: Armor_1
   endActors:
   - {fileID: 6725411387910160267, guid: b47aad75852f13146a6908a4df42d680, type: 3}

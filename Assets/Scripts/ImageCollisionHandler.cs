@@ -170,6 +170,10 @@ public class ImageCollisionHandler : MonoBehaviour
 
     private void Update()
     {
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         CheckForCollisions();
 
         // ѕровер€ем, все ли стрелки были созданы и уничтожены
@@ -204,6 +208,7 @@ public class ImageCollisionHandler : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         // Ќаходим действие Jump в вашем Action Map
         var gameplayActions = inputActions.FindActionMap("Player"); // «амените "Actions" на точное название вашего Action Map
         var moveAction = gameplayActions.FindAction("Move");
