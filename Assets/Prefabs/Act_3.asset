@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df99079b466a7f34589d69f844185617, type: 3}
+  m_Name: Act_3
+  m_EditorClassIdentifier: 
+  ActId: 3
+  actors:
+  - {fileID: 5234562770233709300, guid: 3c3f0eda168fe1546b9a843cf40e31e1, type: 3}
+  type: 2
+  questSceneName: Shield_1
+  endActors:
+  - {fileID: 7112583317933070282, guid: d4ddf876b28310d46a740649329c0f88, type: 3}

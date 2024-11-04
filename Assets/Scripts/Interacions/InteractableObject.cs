@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,5 +11,12 @@ public class InteractableObject : MonoBehaviour, IInteractable
         get => onInteract;
         set => onInteract = value;
     }
-    public void Interact() => onInteract.Invoke();
+    public void Interact()
+    {
+        if (enabled)
+        {
+            onInteract.Invoke();
+        }
+        
+    }
 }
