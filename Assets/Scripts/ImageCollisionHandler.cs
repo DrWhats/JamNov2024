@@ -17,7 +17,6 @@ public class ImageCollisionHandler : MonoBehaviour
     public GameObject[] HitSFX;
     public GameObject[] visualFeedbackObjects; // Массив объектов для визуальной обратной связи
     public Button returnButton; // Ссылка на кнопку "Return"
-    public TextMeshProUGUI winText; // Ссылка на TextMeshProUGUI для отображения надписи "Win"
     [SerializeField] private GameObject WinPanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] Animator animator;
@@ -36,10 +35,6 @@ public class ImageCollisionHandler : MonoBehaviour
         {
             returnButton.gameObject.SetActive(false);
             returnButton.onClick.AddListener(RestartScene); // Привязываем метод RestartScene к событию нажатия кнопки
-        }
-        if (winText != null)
-        {
-            winText.gameObject.SetActive(false);
         }
 
         // Деактивируем все объекты визуальной обратной связи при старте

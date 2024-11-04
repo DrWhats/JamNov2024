@@ -831,8 +831,10 @@ MonoBehaviour:
   targetZoneWidth: 0.1
   targetZone: {fileID: 2006597074}
   scoreText: {fileID: 357562867}
-  winText: {fileID: 0}
-  PinSFX: []
+  winText: {fileID: 1243475980}
+  PinSFX:
+  - {fileID: 315715365850481284, guid: 79c9a7fe9d94bcd4ab79274aca841709, type: 3}
+  - {fileID: 315715365850481284, guid: 7cbf9f525d9c5864fb44a41c26765f3f, type: 3}
 --- !u!4 &269059389
 Transform:
   m_ObjectHideFlags: 0
@@ -2024,7 +2026,7 @@ MonoBehaviour:
   targetZoneWidth: 0.1
   targetZone: {fileID: 2006597074}
   scoreText: {fileID: 357562867}
-  winText: {fileID: 1128705664}
+  winText: {fileID: 1243475980}
   PinSFX:
   - {fileID: 315715365850481284, guid: 79c9a7fe9d94bcd4ab79274aca841709, type: 3}
   - {fileID: 315715365850481284, guid: 7cbf9f525d9c5864fb44a41c26765f3f, type: 3}
@@ -4370,11 +4372,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &1128705664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1496444827747482658, guid: 30a708b74d2255a4eb39173b502c05ff, type: 3}
-  m_PrefabInstance: {fileID: 858930828}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150251818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,6 +4737,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242291611}
   m_Mesh: {fileID: 8444210970189171048, guid: 1eb7b22c693c8f642b6006c528482944, type: 3}
+--- !u!1 &1243475980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1496444827747482658, guid: 30a708b74d2255a4eb39173b502c05ff, type: 3}
+  m_PrefabInstance: {fileID: 858930828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306997691
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,7 +5686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedBakingSet: {fileID: 0}
-  sceneGUID: 624213170949c054cad09c388bd4d9a0
+  sceneGUID: 30b1deccbba15c0478434c857212ebfe
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
   obsoleteCellSupportDataAsset: {fileID: 0}
