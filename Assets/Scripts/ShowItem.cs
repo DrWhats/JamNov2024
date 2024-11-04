@@ -7,7 +7,7 @@ public class ShowItem: MonoBehaviour
     void Start()
     {
 
-        if (myAct < ActManager.Instance.CurrentAct)
+        if (myAct >= ActManager.Instance.CurrentAct)
         {
             transform.gameObject.SetActive(false);
         }
