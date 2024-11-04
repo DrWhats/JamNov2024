@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ActManager : MonoBehaviour
 {
@@ -79,7 +80,13 @@ public class ActManager : MonoBehaviour
         }
     }
 
+
     public void StartAct()
+    {
+        StartCoroutine(SpawnWithDelayStartAct());
+    }
+
+    IEnumerator SpawnWithDelayStartAct()
     {
         ActManager.Instance.SetActState(ActManager.ActState.ActStart);
         Acts currentactObject = acts[CurrentAct];
@@ -88,18 +95,27 @@ public class ActManager : MonoBehaviour
         foreach (GameObject person in currentactObject.actors)
         {
             Instantiate(person, spawner.position, spawner.rotation);
+            yield return new WaitForSeconds(1f); // Задержка в 0.5 секунды
         }
     }
 
     public void DoneAct()
+    {
+
+        StartCoroutine(SpawnWithDelayDoneAct());
+    }
+
+    IEnumerator SpawnWithDelayDoneAct()
     {
         Acts currentactObject = acts[CurrentAct];
         currentQuest = currentactObject.questSceneName;
         foreach (GameObject person in currentactObject.endActors)
         {
             Instantiate(person, spawner.position, spawner.rotation);
+            yield return new WaitForSeconds(1f); // Задержка в 0.5 секунды
         }
     }
+
 
     public void StartQuest()
     {

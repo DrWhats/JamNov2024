@@ -19,3 +19,4 @@ MonoBehaviour:
   questSceneName: Armor_1
   endActors:
   - {fileID: 1293389899124002208, guid: 3cfb5a20429d96f48987de7b9424d50f, type: 3}
+  - {fileID: 8138347555214978809, guid: bdd830aaddb10f04aad8d22f5e1dfe1e, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActId: 3
   actors:
-  - {fileID: 5234562770233709300, guid: 3c3f0eda168fe1546b9a843cf40e31e1, type: 3}
+  - {fileID: 5234562770233709300, guid: e904ec21699ed164c89e2e114cb10e66, type: 3}
   type: 2
   questSceneName: Shield_1
   endActors:

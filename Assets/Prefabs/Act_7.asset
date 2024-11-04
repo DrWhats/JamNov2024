@@ -19,3 +19,4 @@ MonoBehaviour:
   questSceneName: Sword_3
   endActors:
   - {fileID: 9157156547599443422, guid: 1d541c036f95eb546a78ddc908b7fb0c, type: 3}
+  - {fileID: 8138347555214978809, guid: bdd830aaddb10f04aad8d22f5e1dfe1e, type: 3}
