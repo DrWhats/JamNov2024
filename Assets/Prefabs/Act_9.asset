@@ -16,6 +16,6 @@ MonoBehaviour:
   actors:
   - {fileID: 8834411227983305254, guid: f7fec956b964d4a418f99f97b010be21, type: 3}
   type: 2
-  questSceneName: Shield_1
+  questSceneName: Shield_3
   endActors:
   - {fileID: 2077423721285765356, guid: c533bb2890537b44aaf482f9daa6bab3, type: 3}
