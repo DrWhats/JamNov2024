@@ -1147,7 +1147,7 @@ MonoBehaviour:
   - {fileID: 1569662675759881624, guid: b5c28cb0f1613314281d0c1c25cfd06a, type: 3}
   - {fileID: 1582020664649000860, guid: 6030a44e0884add43958ad46247212c0, type: 3}
   - {fileID: 1930373784343257345, guid: 319cb92f50190d748a55e252f0ba29a9, type: 3}
-  finalStep: {fileID: 4778803569818951125, guid: 35dbfddf746a1e245817558d02515658, type: 3}
+  finalStep: {fileID: 4778803569818951125, guid: 60e16278ab7902040b42054030884c05, type: 3}
   root: {fileID: 1242717831}
 --- !u!114 &785229926
 MonoBehaviour:
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1859543938}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 8
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
